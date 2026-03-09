@@ -1,0 +1,9 @@
+Add messaging system between staff.
+
+Timesheet should be a single sheet -> staff select the day and their hours.
+
+Add staff report under the admin menu.
+
+Report data should be saved permanently.
+
+When Peter changes a user's role, there should be a button to send the user a password reset code.
