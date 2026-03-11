@@ -1,5 +1,5 @@
 <?php
-include "Header.php"; 
+include "Navbar.php"; 
 
 /*
 if (!isset($_SESSION['loggedin'])) {
