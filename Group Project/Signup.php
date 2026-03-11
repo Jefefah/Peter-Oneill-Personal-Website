@@ -2,7 +2,7 @@
 <?php
 include "Navbar.php"; 
 include "DbConnect.php";
-include "functions.php";
+include "Functions.php";
 $db = dbOpen();
 
 if (isset($_POST['createAccount'])) {
