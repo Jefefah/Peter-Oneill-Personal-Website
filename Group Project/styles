@@ -1,18 +1,18 @@
 .login-page {
 font-family: Arial, sans-serif;
-background-color: #2c3e50;
+background-color: #FFF19B;
 display: flex;
 justify-content: center;
 align-items: center;
 height:100vh;
-border-top: 2px solid #827215;
-border-bottom: 3px solid #827215;
+border-top: 2px solid #000000;
+border-bottom: 3px solid #000000;
 }
 .login-container {
 background-color: #fff;
 padding: 20px;
 border-radius: 5px;
-border: 2px solid #827215;
+border: 2px solid #000000;
 }
 .login-container h2 {
 margin-bottom: 20px;
@@ -21,7 +21,7 @@ margin-bottom: 20px;
 .login-container button[type=submit] {
 width: 25%;
 padding: 10px;
-background-color: #827215;
+background-color: #000000;
 border: none;
 border-radius: 5px;
 color: white;
@@ -30,7 +30,7 @@ font-size: 16px;
 .login-container button[type="button"] {
 width: 25%;
 padding: 10px;
-background-color: #827215;
+background-color: #000000;
 border: none;
 border-radius: 5px;
 color: white;
@@ -43,11 +43,12 @@ font-size: 16px;
 }
 
 .custom-navbar {
-    --bs-navbar-color: #fff;             /* default link color */
-    --bs-navbar-hover-color: #827215;    /* gold hover */
+    height:200px;
+    --bs-navbar-color: #000000;             /* default link color */
+    --bs-navbar-hover-color: #deb622;    /* gold hover */
     --bs-navbar-active-color: #827215;   /* active link */
-    --bs-navbar-brand-color: #827215;    /* brand color */
-    background-color: #a2b007cc;           /* deep navy background */
+    --bs-navbar-brand-color: #000000;    
+    background-color: #FFF19B;           /* deep navy background */
     padding: 1rem 2rem;
 }
 
@@ -82,7 +83,7 @@ font-size: 16px;
 /* Optional: shadow and border */
 .custom-navbar {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-bottom: 2px solid #827215;
+    border-bottom: 2px solid #000000;
 }
 
 /* --- Custom Hotel Table --- */
@@ -94,8 +95,8 @@ font-size: 16px;
 }
 
 .table-custom thead {
-    background-color: #2c3e50; /* deep navy for header */
-    color: #827215; /* gold text */
+    background-color: #FFF19B; /* deep navy for header */
+    color: #000000; /* gold text */
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -131,18 +132,18 @@ font-size: 16px;
 }
 
 .table-responsive::-webkit-scrollbar-thumb {
-    background-color: #2c3e50;
+    background-color: #FFF19B;
     border-radius: 3px;
 }
 
 .custom-footer {
-    background-color: #2c3e50;
-    border-top: 3px solid #827215;
+    background-color: #FFF19B;
+    border-top: 3px solid #000000;
 }   
 
 .custom-button {
     color: white;
-    background-color: #827215;
+    background-color: #000000;
     border: none;
     padding: 1rem 2rem;
     --bs-btn-hover-bg: #655918;
@@ -151,12 +152,12 @@ font-size: 16px;
 
 .custom-pagination .page-link {
     color: white;
-    background-color: #827215;
+    background-color: #000000;
     border: 1px solid white;
 }
 
 .custom-pagination .page-item.active .page-link {
-    background-color: #827215;
+    background-color: #000000;
     color: white;
     font-weight: bold
 }

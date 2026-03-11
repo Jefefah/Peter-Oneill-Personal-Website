@@ -19,14 +19,13 @@ session_start();
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="styles.css?v=<?= time();?>">
-    <title>Dr Peter O'Neill</title>
+    <title>Dr Peter O'Neill's Personal Website</title>
 </head>
-c
+
 <body class="d-flex flex-column min-vh-100">
     <nav class="navbar custom-navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">S&M Hotels
-                <i class="bi bi-buildings-fill" alt="Logo"></i>
+            <a class="navbar-brand" href="#">Dr Peter O'Neill
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -38,17 +37,13 @@ c
                     <li class="nav-item active">
                         <a class="nav-link" aria-current="page" href="Index.php">Home</a>
                     </li>
-                    <?php if (isset($_SESSION['loggedin'])) { ?>
-                    <li class="nav-item" id="bookings-link">
-                        <a class="nav-link" href="viewBookings.php">Bookings</a>
-                    </li>
                     <li class="nav-item dropdown" id="rooms-link">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Rooms
+                            About Me
                         </a>
                         <ul class="dropdown-menu" id="rooms-dropdown">
-                            <li><a class="dropdown-item" href="viewRooms.php">View Rooms</a></li>
+                            <li><a class="dropdown-item" href="viewRooms.php">My Work</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -61,7 +56,6 @@ c
                     <li class="nav-item" id="hotels-link">
                         <a class="nav-link" href="viewHotels.php">Hotels</a>
                     </li>
-                    <?php } ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right ms-auto">
                     <?php if (!isset($_SESSION['loggedin'])) { ?>
