@@ -1,7 +1,7 @@
 <?php
 include "Header.php"; 
 
-
+/*
 if (!isset($_SESSION['loggedin'])) {
     // Not logged in
     header("Location: Login.php");
@@ -14,6 +14,7 @@ elseif (isset($_SESSION['loggedin'])) {
     <p class='text-center'>You are now logged in. Use the navigation menu to access different sections of the site.</p>
     </div>";
 }
+    */
 ?>
 
 <?php include_once "Footer.php"; ?>
