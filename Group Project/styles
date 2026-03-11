@@ -1,0 +1,162 @@
+.login-page {
+font-family: Arial, sans-serif;
+background-color: #2c3e50;
+display: flex;
+justify-content: center;
+align-items: center;
+height:100vh;
+border-top: 2px solid #827215;
+border-bottom: 3px solid #827215;
+}
+.login-container {
+background-color: #fff;
+padding: 20px;
+border-radius: 5px;
+border: 2px solid #827215;
+}
+.login-container h2 {
+margin-bottom: 20px;
+}
+
+.login-container button[type=submit] {
+width: 25%;
+padding: 10px;
+background-color: #827215;
+border: none;
+border-radius: 5px;
+color: white;
+font-size: 16px;
+}
+.login-container button[type="button"] {
+width: 25%;
+padding: 10px;
+background-color: #827215;
+border: none;
+border-radius: 5px;
+color: white;
+font-size: 16px;
+}
+
+
+#data tr {
+  display: none;
+}
+
+.custom-navbar {
+    --bs-navbar-color: #fff;             /* default link color */
+    --bs-navbar-hover-color: #827215;    /* gold hover */
+    --bs-navbar-active-color: #827215;   /* active link */
+    --bs-navbar-brand-color: #827215;    /* brand color */
+    background-color: #2c3e50;           /* deep navy background */
+    padding: 1rem 2rem;
+}
+
+.custom-navbar .navlink {
+    color: var(--bs-navbar-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.custom-navbar .navlink:hover {
+    color: var(--bs-navbar-hover-color);
+}
+
+
+.custom-navbar .nav-link.active {
+    color: var(--bs-navbar-active-color);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* Brand */
+.custom-navbar .custom-navbar-brand {
+    color: var(--bs-navbar-brand-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.custom-navbar .custom-navbar-brand:hover {
+    color: white;
+}
+/* Optional: shadow and border */
+.custom-navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-bottom: 2px solid #827215;
+}
+
+/* --- Custom Hotel Table --- */
+.table-custom {
+    background-color: #f8f9fa; /* light gray background */
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.table-custom thead {
+    background-color: #2c3e50; /* deep navy for header */
+    color: #827215; /* gold text */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table-custom tbody tr:hover {
+    background-color: #000000; /* subtle hover effect */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+/* Availability coloring */
+.table-custom .table-available {
+    background-color: #d1e7dd; /* green tint */
+    color: #0f5132;
+}
+
+.table-custom .table-occupied {
+    background-color: #f8d7da; /* red tint */
+    color: #842029;
+}
+
+.table-custom tbody tr:nth-child(even) {
+    background-color: #ffffff; /* subtle stripe */
+}
+
+.table-custom td, .table-custom th {
+    vertical-align: middle;
+    padding: 0.75rem 1rem;
+}
+
+/* Responsive scrollbar style */
+.table-responsive::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: #2c3e50;
+    border-radius: 3px;
+}
+
+.custom-footer {
+    background-color: #2c3e50;
+    border-top: 3px solid #827215;
+}   
+
+.custom-button {
+    color: white;
+    background-color: #827215;
+    border: none;
+    padding: 1rem 2rem;
+    --bs-btn-hover-bg: #655918;
+    --bs-btn-active-bg: #4e4409;
+}
+
+.custom-pagination .page-link {
+    color: white;
+    background-color: #827215;
+    border: 1px solid white;
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: #827215;
+    color: white;
+    font-weight: bold
+}
