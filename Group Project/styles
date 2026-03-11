@@ -47,7 +47,7 @@ font-size: 16px;
     --bs-navbar-hover-color: #827215;    /* gold hover */
     --bs-navbar-active-color: #827215;   /* active link */
     --bs-navbar-brand-color: #827215;    /* brand color */
-    background-color: #2c3e50;           /* deep navy background */
+    background-color: #a2b007cc;           /* deep navy background */
     padding: 1rem 2rem;
 }
 
