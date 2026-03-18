@@ -1,0 +1,216 @@
+html, body {
+  height: 100%;
+}
+
+body {
+    background-color: #fdf7e6; /* base light tone */
+    background-image:
+        linear-gradient(120deg, #f2cf66 12%, transparent 12%, transparent 50%, #f2cf66 50%, #f2cf66 62%, transparent 62%, transparent),
+        linear-gradient(60deg, #f7e29a 12%, transparent 12%, transparent 50%, #f7e29a 50%, #f7e29a 62%, transparent 62%, transparent);
+    background-size: 60px 105px;
+    background-position: 0 0, 40px 70px;
+}
+
+/*CSS for the signup page*/
+.custom-signup-container {
+background-color: #FFF19B;
+padding: 20px;
+border-radius: 5px;
+border: 2px solid #000000;
+max-width: 600px;
+}
+
+.custom-signup-container h2 {
+margin-bottom: 20px;
+}
+
+.custom-signup-container button[type=submit] {
+width: 25%;
+padding: 10px;
+background-color: #FFDB58;
+border: none;
+border-radius: 5px;
+color: rgb(0, 0, 0);
+font-size: 16px;
+}
+
+
+/*CSS for the login page*/
+.custom-login-container {
+background-color: #FFF19B;
+padding: 20px;
+border-radius: 5px;
+border: 2px solid #000000;
+border-radius: 12px;
+max-width: 600px;
+}
+
+.custom-login-container h2 {
+margin-bottom: 20px;
+}
+
+.custom-login-container button[type=submit] {
+width: 25%;
+padding: 10px;
+background-color: #FFDB58;
+border: none;
+border-radius: 5px;
+color: rgb(0, 0, 0);
+font-size: 16px;
+}
+.custom-login-container button[type="create"] {
+width: 25%;
+padding: 10px;
+background-color: #FFDB58;
+border: none;
+border-radius: 5px;
+color: rgb(0, 0, 0);
+font-size: 16px;
+}
+
+
+#data tr {
+  display: none;
+}
+
+/* custom navbar for bootstrap */
+
+.custom-navbar {
+    height:200px;
+    --bs-navbar-color: #000000;
+    --bs-navbar-hover-color: #deb622;   
+    --bs-navbar-active-color: #827215; 
+    --bs-navbar-brand-color: #000000;    
+    background-color: #FFF19B;          
+    padding: 1rem 2rem;
+}
+
+.custom-navbar-container {
+    --bs-navbar-color: #000000;          /* default link color */
+    --bs-navbar-hover-color: #deb622;    /* gold hover */
+    --bs-navbar-active-color: #827215;   /* active link */
+    --bs-navbar-brand-color: #000000;    
+    background-color: #FFDB58;
+    max-width: fit-content; 
+    height: 125px;          /* deep navy background */
+    padding: 1rem 2rem;
+}
+
+.custom-navbar .navlink {
+    color: var(--bs-navbar-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.custom-navbar .navlink:hover {
+    color: var(--bs-navbar-hover-color);
+}
+
+
+.custom-navbar .nav-link.active {
+    color: var(--bs-navbar-active-color);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.custom-navbar .custom-navbar-brand {
+    color: var(--bs-navbar-brand-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.custom-navbar .custom-navbar-brand:hover {
+    color: white;
+}
+
+/* Change dropdown background */
+.navbar .dropdown-menu {
+    background-color: #FFF19B; 
+}
+
+/* Change dropdown item text colour */
+.navbar .dropdown-menu .dropdown-item {
+    color: #000000;
+}
+
+/* Optional: hover colour */
+.navbar .dropdown-menu .dropdown-item:hover {
+    background-color: #FFF19B;  
+    color: #deb622;
+}
+
+/* --- Custom Hotel Table --- */
+.table-custom {
+    background-color: #f8f9fa; /* light gray background */
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.table-custom thead {
+    background-color: #FFF19B; /* deep navy for header */
+    color: #000000; /* gold text */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table-custom tbody tr:hover {
+    background-color: #000000; /* subtle hover effect */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+/* Availability coloring */
+.table-custom .table-available {
+    background-color: #d1e7dd; /* green tint */
+    color: #0f5132;
+}
+
+.table-custom .table-occupied {
+    background-color: #f8d7da; /* red tint */
+    color: #842029;
+}
+
+.table-custom tbody tr:nth-child(even) {
+    background-color: #ffffff; /* subtle stripe */
+}
+
+.table-custom td, .table-custom th {
+    vertical-align: middle;
+    padding: 0.75rem 1rem;
+}
+
+/* Responsive scrollbar style */
+.table-responsive::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: #FFF19B;
+    border-radius: 3px;
+}
+
+.custom-footer {
+    background-color: #FFF19B;
+}   
+
+.custom-button {
+    color: white;
+    background-color: #000000;
+    border: none;
+    padding: 1rem 2rem;
+    --bs-btn-hover-bg: #655918;
+    --bs-btn-active-bg: #4e4409;
+}
+
+.custom-pagination .page-link {
+    color: white;
+    background-color: #000000;
+    border: 1px solid white;
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: #000000;
+    color: white;
+    font-weight: bold
+}

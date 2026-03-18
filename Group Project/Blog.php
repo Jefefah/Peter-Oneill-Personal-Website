@@ -1,9 +1,8 @@
-include "Header.php"; 
-<html>
-<body>
+<?php
+include "Navbar.php"; 
+?>
 
-</p> Hello I am Dr Peter O'Neill and this is my blog. Today I had steak pie and it was class, thanks for reading.</p> <!--you should know what p tag
- does-->
+    <h1 class="mb-3">My Blog</h1>
 
-</body>
-</html>
+
+<?php include_once "Footer.php"; ?>

@@ -1,8 +1,8 @@
-
 <?php
 include "Navbar.php"; 
-include "DbConnect.php";
-include "Functions.php";
+include "dbConnect.php";
+include "functions.php";
+/*
 $db = dbOpen();
 
 if (isset($_POST['createAccount'])) {
@@ -31,13 +31,12 @@ if (isset($_POST['createAccount'])) {
     }
 }
 
-
+*/
 ?>
 
-<div class="container mt-4 mb-4 p-4 rounded shadow-lg"
-    style="max-width: 600px; background-color: #ecf0f1; border: 2px solid #827215;">
+<div class="container mt-4 mb-4 p-4 rounded shadow-lg custom-signup-container">
     <h2 class="text-center mb-4">Create Your Account</h2>
-    <form method="POST" class="d-flex flex-column flex-nowrap">
+    <form method="POST" class="d-flex flex-column flex-nowrap align-items-start">
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
                 <div class="form-floating">
@@ -56,8 +55,5 @@ if (isset($_POST['createAccount'])) {
     </form>
 </div>
 
-
-
-   
 
 <?php include_once "Footer.php"; ?>
