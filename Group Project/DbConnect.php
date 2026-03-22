@@ -1,6 +1,6 @@
 <?php
 Function dbOpen() {
-$db = new SQLite3('DBWassignment.db');
+$db = new SQLite3('PeterOneillDatabase.sqbpro');
 if ($db) {
     //echo "Opened database successfully\n";
     return $db;

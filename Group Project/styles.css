@@ -33,6 +33,15 @@ border-radius: 5px;
 color: rgb(0, 0, 0);
 font-size: 16px;
 }
+.custom-login-container button[type=button] {
+width: 25%;
+padding: 10px;
+background-color: #FFDB58;
+border: none;
+border-radius: 5px;
+color: rgb(0, 0, 0);
+font-size: 16px;
+}
 
 
 /*CSS for the login page*/
@@ -58,7 +67,7 @@ border-radius: 5px;
 color: rgb(0, 0, 0);
 font-size: 16px;
 }
-.custom-login-container button[type="create"] {
+.custom-login-container button[type="button"] {
 width: 25%;
 padding: 10px;
 background-color: #FFDB58;
@@ -67,7 +76,6 @@ border-radius: 5px;
 color: rgb(0, 0, 0);
 font-size: 16px;
 }
-
 
 #data tr {
   display: none;
@@ -195,10 +203,13 @@ font-size: 16px;
 }   
 
 .custom-button {
-    color: white;
-    background-color: #000000;
+    width: 25%;
+    padding: 10px;
+    background-color: #FFDB58;
     border: none;
-    padding: 1rem 2rem;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
     --bs-btn-hover-bg: #655918;
     --bs-btn-active-bg: #4e4409;
 }

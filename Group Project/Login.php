@@ -2,19 +2,20 @@
 include "Navbar.php"; 
 include "dbConnect.php";
 include "functions.php";
-/* 
-$db = dbOpen();
+
+
+//$db = dbOpen();
 
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $stmt = $db->prepare("SELECT * FROM tblLogins WHERE username = :username");
+    $stmt = $db->prepare("SELECT * FROM USER WHERE USER_EMAIL = :username");
     $stmt->bindValue(':username', $username, SQLITE3_TEXT);
     $stmt->bindValue(':password', $password, SQLITE3_TEXT);
     $results = $stmt->execute();
     $user = $results->fetchArray(SQLITE3_ASSOC);
 
-    if ($user && password_verify($password, $user['PasswordHashed'])) {
+    if ($user && password_verify($password, $user['PASSWORD_HASH'])) {
         // Successful login
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
@@ -31,7 +32,7 @@ if (isset($_POST['login'])) {
     
 }
 
-*/
+
 ?>
 
 
@@ -54,7 +55,7 @@ if (isset($_POST['login'])) {
         </div>
         <div class="d-flex justify-content-between mt-3">
             <button type="submit" value="login" name="login" class="custom-button btn btn-primary mb-3">Login</button>
-            <button type="create" class="btn btn-secondary mb-3" name="signup" id="signup" onclick="window.location.href='Signup.php'">
+            <button type="button" class="btn btn-secondary mb-3" name="signup" id="signup" onclick="window.location.href='Signup.php'">
                 <small class="d-block">Create Account</small>
             </button>   
         </div>

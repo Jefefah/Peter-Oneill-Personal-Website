@@ -95,7 +95,7 @@ session_start();
                     <li class="nav-item dropdown" id="family-link">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Staff
+                            Family
                         </a>
                         <ul class="dropdown-menu" id="family-dropdown">
                             <li><a class="dropdown-item" href="MusicCollection.php">Music</a></li>
