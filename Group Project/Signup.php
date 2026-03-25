@@ -3,7 +3,7 @@ include "Navbar.php";
 include "dbConnect.php";
 include "functions.php";
 
-//$db = dbOpen();
+$db = dbOpen();
 
 if (isset($_POST['createAccount'])) {
     $username = $_POST['username'];

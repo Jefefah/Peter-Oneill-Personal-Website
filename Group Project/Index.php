@@ -15,6 +15,14 @@ elseif (isset($_SESSION['loggedin'])) {
     </div>";
 }
     */
+    include "DbConnect.php";
+    $db = dbOpen();
+    $results = $db->query("SELECT USER_EMAIL FROM USER");
+    while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+        var_dump($row);
+    }
 ?>
+
+
 
 <?php include_once "Footer.php"; ?>

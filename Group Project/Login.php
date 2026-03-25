@@ -1,20 +1,19 @@
 <?php
-include "Navbar.php"; 
-include "dbConnect.php";
+include "DbConnect.php";
 include "functions.php";
-
-
-//$db = dbOpen();
-
+$db = dbOpen();
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $stmt = $db->prepare("SELECT * FROM USER WHERE USER_EMAIL = :username");
     $stmt->bindValue(':username', $username, SQLITE3_TEXT);
-    $stmt->bindValue(':password', $password, SQLITE3_TEXT);
+    //$stmt->bindValue(':password', $password, SQLITE3_TEXT);
     $results = $stmt->execute();
     $user = $results->fetchArray(SQLITE3_ASSOC);
-
+    var_dump($user);
+    var_dump($password);
+    var_dump($user['PASSWORD_HASH']);
+    exit;
     if ($user && password_verify($password, $user['PASSWORD_HASH'])) {
         // Successful login
         $_SESSION['loggedin'] = true;
@@ -25,20 +24,21 @@ if (isset($_POST['login'])) {
     }
     else {
         // Failed login
-        echo "<div class='alert alert-danger' role='alert'>Invalid username or password.</div>";
+        $_SESSION['login_error'] = "<div class='alert alert-danger' role='alert'>Invalid username or password.</div>";
         header("Refresh:2; url=Login.php");
     }
-
-    
 }
-
-
+include "Navbar.php";
 ?>
-
-
 <div class="container mt-4 mb-4 p-4 rounded shadow-lg custom-login-container">
     <h2 class="text-center mb-4">Login to Your Account</h2>
     <form method="POST" class="d-flex flex-column flex-nowrap">
+        <?php
+            if (isset($_SESSION['login_error'])) {
+                echo $_SESSION['login_error'];
+                unset($_SESSION['login_error']);
+            }
+        ?>
         <div class="input-group mb-3">
             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
             <div class="form-floating">
@@ -59,7 +59,6 @@ if (isset($_POST['login'])) {
                 <small class="d-block">Create Account</small>
             </button>   
         </div>
-        
     </form>
 </div>
 
