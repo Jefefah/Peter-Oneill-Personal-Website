@@ -1,2 +1,0 @@
-ErrorDocument 404 /NotFound.php
-ErrorDocument 403 /Forbidden.php

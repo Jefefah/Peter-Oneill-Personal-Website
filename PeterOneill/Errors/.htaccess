@@ -1,0 +1,2 @@
+ErrorDocument 404 /GroupProject/Group Project/Errors/NotFound.php
+ErrorDocument 403 /Forbidden.php
