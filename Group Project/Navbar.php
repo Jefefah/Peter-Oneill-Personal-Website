@@ -1,17 +1,44 @@
-<?php 
-session_start();
-        if (isset($_SESSION['Timeout']) && (time() - $_SESSION['Timeout'] > 900)) {
-            // Last request was more than 15 minutes ago
-            session_unset();     // Unset $_SESSION variable for the run-time
-            session_destroy();   // Destroy session data in storage
-            header("Location: Login.php");
-            exit;
-        }
-        $_SESSION['Timeout'] = time(); // Update timeout timestamp
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start(); 
+}
+$permissions = [
+    'AdminManage.php'     => [1],
+    'Timesheet.php'       => [1, 2],
+    'RotaDiary.php'       => [1, 2],
+    'Documents.php'       => [1, 3],
+    'MusicCollection.php' => [3],
+    'PhotoCollection.php' => [3],
+    'VideoCollection.php' => [3]
+];
+$currentPage = basename($_SERVER['SCRIPT_NAME']);
+$pagePath = __DIR__.'/'.$currentPage;
+if (!file_Exists($pagePath)) {
+    header('HTTP/1.1 404 Not Found');
+    header('Errors/NotFound.php');
+    exit;
+}
+if (isset($permissions[$currentPage])) {
+    $acceptedRoles = $permissions[$currentPage];
+    if (!in_array($_SESSION['userRole'], $acceptedRoles)) {
+        header('HTTP/1.1 403 Forbidden');
+        header('Location: Errors/Forbidden.php');
+        exit;
+    }
+}
+if (isset($_SESSION['Timeout']) && (time() - $_SESSION['Timeout'] > 900)) {
+    // Last request was more than 15 minutes ago
+    session_unset();     // Unset $_SESSION variable for the run-time
+    session_destroy();   // Destroy session data in storage
+    header("Refresh:2; url=Index.php");
+    exit;
+}
+if (isset($_SESSION['loggedin'])) { $_SESSION['Timeout'] = time();} // Update timeout timestamp
+if (!isset($_SESSION['loggedin'])) {$_SESSION['userRole'] = 4;}
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -62,6 +89,7 @@ session_start();
                             <li><a class="dropdown-item" href="Blog.php">My Blog</a></li>
                         </ul>
                     </li>
+                    <?php if ($_SESSION['userRole'] == 1) { ?>
                     <li class="nav-item dropdown" id="admin-link">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -71,6 +99,10 @@ session_start();
                             <li><a class="dropdown-item" href="AdminManage.php">Manage</a></li>
                         </ul>
                     </li>
+                    <?php 
+                    } 
+                    if ($_SESSION['userRole'] == 2 || $_SESSION['userRole'] == 1) {
+                    ?>
                     <li class="nav-item dropdown" id="staff-link">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -92,6 +124,10 @@ session_start();
                             <li><a class="dropdown-item" href="ChangePassword.php">Change Password</a></li>
                         </ul>
                     </li>
+                    <?php
+                    }
+                    if ($_SESSION['userRole'] == 3 || $_SESSION['userRole'] == 1) {
+                    ?>
                     <li class="nav-item dropdown" id="family-link">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -113,9 +149,7 @@ session_start();
                             <li><a class="dropdown-item" href="Documents.php">Documents</a></li>
                         </ul>
                     </li>
-
-
-
+                    <?php } ?>
                     <li class="nav-item" id="workingfor-link">
                         <a class="nav-link" href="WorkingForMe.php">Working For Me</a>
                     </li>
@@ -142,7 +176,8 @@ session_start();
                     <li class="nav-item" id="account-link">
                         <a class="nav-link" href="UserProfile.php"><i class="bi bi-box-arrow-in-right"></i> Account</a>
                     </li>
-                    <?php } ?>
+                    <?php } 
+                    ?>
                 </ul>
             </div>
         </div>

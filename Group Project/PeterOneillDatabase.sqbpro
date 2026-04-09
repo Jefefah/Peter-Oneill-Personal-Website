@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="Database.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2893"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="USER" custom_title="0" dock_id="4" table="4,4:mainUSER"/><dock_state state="000000ff00000000fd0000000100000002000005f4000002aefc0100000004fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000000000000000fb000000160064006f0063006b00420072006f00770073006500320100000000000005940000000000000000fb000000160064006f0063006b00420072006f00770073006500330100000000000005940000000000000000fb000000160064006f0063006b00420072006f00770073006500340100000000000005f40000011800ffffff000005f40000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="BLOGPOST" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="59"/><column index="2" value="61"/><column index="3" value="171"/><column index="4" value="300"/><column index="5" value="85"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="USER" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="59"/><column index="2" value="61"/><column index="3" value="300"/><column index="4" value="84"/><column index="5" value="88"/><column index="6" value="85"/><column index="7" value="210"/><column index="8" value="117"/><column index="9" value="85"/><column index="10" value="85"/><column index="11" value="112"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="ALL TABLES*">CREATE TABLE IF NOT EXISTS ROLE
+(
+ROLE_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+ROLE_NAME TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS USER
+(
+USER_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+ROLE_ID INT NOT NULL,
+PASSWORD_HASH TEXT UNIQUE NOT NULL,
+USER_FNAME TEXT NOT NULL,
+USER_MNAME TEXT,
+USER_LNAME TEXT NOT NULL,
+USER_EMAIL UNIQUE NOT NULL,
+USER_TELNO TEXT NOT NULL,
+USER_DOB DATE NOT NULL,
+CREATED_AT DATE NOT NULL,
+ACCOUNT_STATUS TEXT NOT NULL,
+FOREIGN KEY(ROLE_ID) REFERENCES ROLE(ROLE_ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS STAFF_TIMESHEETS
+(
+TIMESHEETS_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+USER_ID INT NOT NULL,
+WORK_DATE DATE NOT NULL,
+HOURS_WORKED TEXT NOT NULL,
+DESCRIPTION TEXT NOT NULL,
+FOREIGN KEY(USER_ID) REFERENCES USER(USER_ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS LEAVE_REQUEST
+(
+LEAVE_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+USER_ID INT NOT NULL,
+START_DATE DATE NOT NULL,
+END_DATE DATE NOT NULL,
+REASON TEXT NOT NULL,
+STATUS TEXT NOT NULL,
+FOREIGN KEY(USER_ID) REFERENCES USER(USER_ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS MEDIA
+(
+MEDIA_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+USER_ID INT NOT NULL,
+FILE_PATH TEXT NOT NULL,
+TYPE TEXT NOT NULL,
+FOREIGN KEY(USER_ID) REFERENCES USER(USER_ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS BLOGPOST
+(
+POST_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+USER_ID INT NOT NULL,
+TITLE TEXT NOT NULL,
+CONTENT TEXT NOT NULL,
+CREATED_AT INT NOT NULL,
+FOREIGN KEY(USER_ID) REFERENCES USER(USER_ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS COMMENT
+(
+COMMENT_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+USER_ID INT NOT NULL,
+POST_ID INT NOT NULL,
+TEXT_ TEXT NOT NULL,
+CREATED_AT TEXT NOT NULL,
+FOREIGN KEY(USER_ID) REFERENCES USER(USER_ID) ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY(POST_ID) REFERENCES BLOGPOST(POST_ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+/*table for password change request tokens*/
+CREATE TABLE IF NOT EXISTS PASSWORDCHANGE
+(
+REQUEST_TOKEN TEXT PRIMARY KEY,
+USER_ID INT NOT NULL,
+REQUEST_TIMESTAMP DATE NOT NULL,
+FOREIGN KEY(USER_ID) REFERENCES USER(USER_ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+/*table for dynamic user creation tokens*/
+CREATE TABLE IF NOT EXISTS INVITELINK
+(
+INVITE_TOKEN TEXT PRIMARY KEY,
+USER_ID INT NOT NULL,
+INVITE_TIMESTAMP DATE NOT NULL,
+FOREIGN KEY(USER_ID) REFERENCES USER(USER_ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+/*Table for page content for in website editing of content*/
+CREATE TABLE IF NOT EXISTS PAGECONTENT
+(
+CONTENT_ID TEXT PRIMARY KEY,
+CONTENT_DATA TEXT NOT NULL,
+LAST_EDITED DATE NOT NULL
+);
+</sql><sql name="ALL VALUES*">/*-----INSERT VALUES IN ROLE TABLE-----*/
+INSERT INTO ROLE(ROLE_ID, ROLE_NAME) VALUES 
+('1','ADMIN'),
+('2','STAFF'),
+('3','FAMILY MEMBER'),
+('4','PUBLIC');
+
+/*----INSERT VALUES IN USER TABLES-----*/
+INSERT INTO USER(ROLE_ID, PASSWORD_HASH ,USER_FNAME, USER_MNAME ,USER_LNAME, USER_EMAIL, USER_TELNO, USER_DOB, CREATED_AT, ACCOUNT_STATUS) VALUES
+('3','$2y$10$vRFwyeOTNK35J3sSdgzU0eqHx2ePFURc2YqyQ.9P0T1ivoU2QhOe2' ,'JOHN', 'Williams' ,'MARK', 'johnmark1977@gmail.com', '+44 7494053453', '12-04-1977', '25-10-2025', 'ACTIVE'), /*Password is 1*/
+('2','$2y$10$cvS7lspgy/F8GqamxhwxH.mCn1fmAZhQlT/72AcTL4A3jVT3r.Mq.' ,'MICHAEL', 'JACK' ,'BROWN', 'michaelbrown1876@gmail.com', '+44 5343343585', '23-08-1876', '20-11-2024', 'ACTIVE'),/*Password is 2*/
+('3','$2y$10$PhONSOHet5WnhWnNUk6N8e7sUv596vjNxfqsrGfbdd3IwG611F/z' ,'DAVID', 'WALLIAMS' ,'MARK', 'davidmark2002@gmail.com', '+44 7423453453', '18-04-2002', '02-01-2026', 'INACTIVE'),/*Password is 3*/
+('1','$2y$10$BMasOakAYTQTfCzdhTrOEuqIU6mDlgsD/pv0y/BvhO2RDG9TBTEw.' ,'WILLIAM', 'JAKE' ,'RICHARDSON', 'williamson1977@gmail.com', '+44 7489675453', '12-04-2004', '27-10-2024', 'ACTIVE'),/*Password is 4*/
+('2','$2y$10$GQ638x0PPsgDbDuVvqDkmeHEiLwX6sJA34YZFtU5fyizEt8FV4LIC' ,'EMILY', 'TAYLOR' ,'SMITH', 'emilysmith1987@gmail.com', '+44 7494066773', '24-04-1987', '21-10-2025', 'ACTIVE'),/*Password is 5*/
+('4','$2y$10$acIfHTfYkw2puF1WAb4buOTX1lyEEJYRfN.9mUkrF5jFsMsrTgRPS' ,'SARAH', 'LEE' ,'TAYLOR', 'sarahtaylor1990@gmail.com', '+44 7467543458', '02-05-1990', '05-12-2025', 'INACTIVE'),/*Password is 6*/
+('1','$2y$10$QM2HMKZKWYE/MEB/BEpDqe9UAKFJH87IRAtofoqR4mE.naK5wiYKO' ,'LIKHITH', '' ,'KUMAR', 'likhithkumar1989@gmail.com', '+44 7494065763', '12-04-1989', '19-07-2025', 'INACTIVE'),/*Password is 7*/
+('4','$2y$10$d7Sl1p51ze/nJAJuXz5Y6uyXQG3HYXs7aqf3ZB7IpQ9uqr8P06pY2' ,'ROBHIN', '' ,'KANE', 'robhinkane1997@gmail.com', '+44 7986953453', '26-09-1997', '25-10-2025', 'ACTIVE'),/*Password is 8*/
+('4','$2y$10$E4RYN1KffZJJKfakR8ptaeNLSDh6dSWQXnozPxoW/qDV843CeXu4G' ,'ANTONY', '' ,'MARK', 'antonymark2001@gmail.com', '+44 9112243453', '15-08-2001', '27-10-2024', 'INACTIVE');/*Password is 9*/
+
+/*----INSERT VALUES IN STAFF_TIMESHEETS----*/
+INSERT INTO STAFF_TIMESHEETS(USER_ID, WORK_DATE, HOURS_WORKED, DESCRIPTION) VALUES
+(1, '2026-01-22', '9', 'Worked on rota diary' ),
+(2, '2026-01-18', '6', 'Added new blog post functionality and tested database connections' ),
+(3, '2026-01-23', '7', 'Updated personal website pages and fixed layout issues' ),
+(4, '2026-02-11', '9', 'Worked on staff login system and role-based access control' ),
+(5, '2026-02-15', '5', 'Uploaded family photos and organised media files' ),
+(6, '2026-01-27', '8', 'Implemented leave request page and database integration' ),
+(3, '2026-01-25', '6', 'Website testing' ),
+(4, '2026-03-12', '8', 'Edited website pages'),
+(2, '2026-03-11', '8', 'Updated user details' ),
+(1, '2026-01-21', '7', 'Checked messages' ),
+(1, '2026-02-24', '5', 'Organised media files' );
+
+/*----INSERT VALUES IN LEAVE_REQUEST----*/
+INSERT INTO LEAVE_REQUEST(USER_ID, START_DATE, END_DATE, REASON, STATUS) VALUES
+(1, '2026-03-16', '2026-03-18', 'Sick leave', 'Approved'),
+(2, '2026-03-21', '2026-03-26', 'Vacation leave', 'Declined'),
+(3, '2026-03-18', '2026-03-22', 'Parental leave', 'Approved'),
+(4, '2026-03-25', '2026-03-29', 'Important personal errands','Approved'),
+(5, '2026-03-17', '2026-03-20', 'Religious Observances', 'Declined'),
+(6, '2026-03-16', '2026-03-20', 'Mental health leave', 'Approved');
+
+/*----INSERT VALUES IN MEDIA-----*/
+INSERT INTO MEDIA(USER_ID, FILE_PATH, TYPE) VALUES
+(1, 'C:\Documents\photo.jpg', 'image'),
+(2, 'C:\Documnets\comment.txt', 'text'),
+(3, 'C:\Desktop\mark.jpg', 'image'),
+(4, 'C:\John-personal\John.pdf', 'document'),
+(5, 'C:\Desktop\project.zip', 'zipper'),
+(6, 'C:\Downloads\task.png', 'image');
+
+/*----INSERT VALUES IN BLOGPOST-----*/
+INSERT INTO BLOGPOST(USER_ID, TITLE, CONTENT, CREATED_AT) VALUES 
+(1, 'Welcome to my website', 'This is my first blog post on my personal website', '2026-01-10'),
+(2, 'About my work', 'In this post I talk about the work I do and my experience', '2026-03-12'),
+(3, 'My Interests', 'I enjoy music, technology, and learning new things.', '2026-01-23'),
+(4, 'Website Udate', 'Today I updated some pages on my website', '2026-03-13'),
+(5, 'New Blog sections', 'I have added a new blog section to share updates.', '2026-01-21'),
+(6, 'Family memories', 'This post is about some nice family memories.', '2026-02-25');
+
+/*----INSERT VALUES IN COMMENT-----*/
+INSERT INTO COMMENT(USER_ID, POST_ID, TEXT_, CREATED_AT) VALUES 
+(1, 2, 'Your post is so beautiful', '2025-04-16'),
+(2, 2, 'Can I post your image please', '2026-03-12'),
+(3, 1, 'In your post if you could show your face it could be good ', '2025-12-23'),
+(4, 4, 'Can you please like my comment...', '2026-02-21'),
+(5, 3, 'the image is so embarrising', '2026-01-23'),
+(6, 5, 'Can you please follow me', '2025-10-25');
+
+/*----INSERT VALUES IN PAGE CONTENT-----*/
+INSERT INTO PAGECONTENT(CONTENT_ID, CONTENT_DATA, LAST_EDITED) VALUES
+('MYWORK', 'placeholder words about work---------------------------------------------------------------', '2026-03-25'),
+('MYDISABILITY','Placeholder text','2026-03-25'),
+('MYINTERESTS','Placeholder text','2026-03-25'),
+('MYRECOMMENDATIONS','Placeholder text','2026-03-25'),
+('HOME','Placeholder text','2026-03-25'),
+('WORKINGFORME','Placeholder text','2026-03-25'),
+('CONTACTME','Placeholder text','2026-03-25');</sql><current_tab id="0"/></tab_sql></sqlb_project>

@@ -8,6 +8,11 @@ $db = dbOpen();
 if (isset($_POST['createAccount'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $firstname = $_POST[''];
+    $middlename = $_POST[''];
+    $lastname = $_POST[''];
+    $telno = $_POST[''];
+    $dob = $_POST[''];
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Check if username already exists
@@ -22,9 +27,14 @@ if (isset($_POST['createAccount'])) {
         header("Refresh:2; url=Signup.php");
     } else {
         // Insert new user into the database
-        $stmt = $db->prepare("INSERT INTO USER (USER_EMAIL, PasswordHashed) VALUES (:username, :password)");
+        $stmt = $db->prepare("INSERT INTO USER (USER_EMAIL, PasswordHashed, USER_FNAME, USER_MNAME, USER_LNAME, USER_TELNO, USER_DOB) VALUES (:username, :password, :firstname, :middlename, :lastname, :telno, :dob)");
         $stmt->bindValue(':username', $username, SQLITE3_TEXT);
         $stmt->bindValue(':password', $hashedPassword, SQLITE3_TEXT);
+        $stmt->bindvalue(':firstname', $firstname, SQLITE3_TEXT);
+        $stmt->bindValue(':middlename', $middlename, SQLITE3_TEXT);
+        $stmt->bindValue(':lastname', $lastname, SQLITE3_TEXT);
+        $stmt->bindValue(':telno', $telno, SQLITE3_TEXT);
+        $stmt->bindValue(':dob', $dob, SQLITE3_TEXT);
         $stmt->execute();
         echo "<div class='alert alert-success' role='alert'>Account created successfully! Redirecting to login page...</div>";
         header("Refresh:2; url=Login.php");
@@ -38,7 +48,7 @@ if (isset($_POST['createAccount'])) {
         document.getElementById("middlecontainer").style.display = "none";
         document.getElementById("surnamecontainer").style.display = "none";
         document.getElementById("telcontainer").style.display = "none";
-        document.getElementById("dobcontainer").style.display = "none";
+        //document.getElementById("dobcontainer").style.display = "none";
         document.getElementById("createaccount").style.display = "none";
     };  
 </script>
@@ -57,6 +67,13 @@ if (isset($_POST['createAccount'])) {
             <div class="form-floating">
                 <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                 <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="input-group mb-3" id="dobcontainer">
+            <span class="input-group-text"><i class="bi bi-calendar2-plus-fill"></i></span>
+            <div class="form-floating">
+                <input type="date" class="form-control" name="dob" id="dob" placeholder="DOB">
+                <label for="dob">Date of Birth</label>
             </div>
         </div>
         <button type="button" value="nextpage" name="nextpage" id="nextpage" class="custom-button btn btn-primary mb-3">Next</button>
@@ -88,13 +105,6 @@ if (isset($_POST['createAccount'])) {
                     <label for="Telephone">Telephone</label>
                 </div>
             </div>
-            <div class="input-group mb-3" id="dobcontainer">
-                <span class="input-group-text"><i class="bi bi-calendar2-plus-fill"></i></span>
-                <div class="form-floating">
-                    <input type="date" class="form-control" name="dob" id="dob" placeholder="DOB">
-                    <label for="dob">Date of Birth</label>
-                </div>
-            </div>
         <button type="submit" value="createAccount" name="createAccount" id="createaccount" class="custom-button btn btn-primary mb-3">Create Account</button>
     </form>
 </div>
@@ -108,10 +118,13 @@ if (isset($_POST['createAccount'])) {
         document.getElementById("middlecontainer").style.display = "flex";
         document.getElementById("surnamecontainer").style.display = "flex";
         document.getElementById("telcontainer").style.display = "flex";
-        document.getElementById("dobcontainer").style.display = "flex";
+        document.getElementById("dobcontainer").style.display = "none";
         document.getElementById("createaccount").style.display = "flex";
     };
 </script>
 
 
-<?php include_once "Footer.php"; ?>
+<?php 
+dbClose($db);
+include_once "Footer.php"; 
+?>

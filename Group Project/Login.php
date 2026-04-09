@@ -1,21 +1,18 @@
 <?php
+session_start();
 include "DbConnect.php";
-include "functions.php";
+include "Functions.php";
 $db = dbOpen();
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $stmt = $db->prepare("SELECT * FROM USER WHERE USER_EMAIL = :username");
     $stmt->bindValue(':username', $username, SQLITE3_TEXT);
-    //$stmt->bindValue(':password', $password, SQLITE3_TEXT);
     $results = $stmt->execute();
     $user = $results->fetchArray(SQLITE3_ASSOC);
-    var_dump($user);
-    var_dump($password);
-    var_dump($user['PASSWORD_HASH']);
-    exit;
     if ($user && password_verify($password, $user['PASSWORD_HASH'])) {
         // Successful login
+        $_SESSION['userRole'] = $user['ROLE_ID'];
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
         $_SESSION['Timeout'] = time(); // Set the timeout timestamp
@@ -26,6 +23,7 @@ if (isset($_POST['login'])) {
         // Failed login
         $_SESSION['login_error'] = "<div class='alert alert-danger' role='alert'>Invalid username or password.</div>";
         header("Refresh:2; url=Login.php");
+        exit;
     }
 }
 include "Navbar.php";
@@ -63,4 +61,7 @@ include "Navbar.php";
 </div>
 
 
-<?php include_once "Footer.php"; ?>
+<?php 
+dbClose($db);
+include_once "Footer.php"; 
+?>

@@ -1,6 +1,7 @@
 <?php
 Function dbOpen() {
 $db = new SQLite3('Database.db');
+//echo "DB path: " . realpath('Database.db');
 if ($db) {
     //echo "Opened database successfully\n";
     return $db;
