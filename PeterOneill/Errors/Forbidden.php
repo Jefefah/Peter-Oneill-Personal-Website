@@ -12,7 +12,7 @@
     <div class="container p-4 bg-white border shadow w-50 text-center">
         <h1>403 Forbidden</h1>
         <p>You do not have the required permissions to access this page, please log in to your account or contact your administrator.</p>
-        <a href="../Index.php" class="custom-button btn btn-primary">Return to Home Page</a>
+        <a href="../Index" class="custom-button btn btn-primary">Return to Home Page</a>
     </div> 
 </body>
 </html>

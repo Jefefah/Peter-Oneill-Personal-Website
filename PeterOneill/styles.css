@@ -2,14 +2,6 @@ html, body {
   height: 100%;
 }
 
-body {
-    background-color: #fdf7e6; /* base light tone */
-    background-image:
-        linear-gradient(120deg, #f2cf66 12%, transparent 12%, transparent 50%, #f2cf66 50%, #f2cf66 62%, transparent 62%, transparent),
-        linear-gradient(60deg, #f7e29a 12%, transparent 12%, transparent 50%, #f7e29a 50%, #f7e29a 62%, transparent 62%, transparent);
-    background-size: 60px 105px;
-    background-position: 0 0, 40px 70px;
-}
 /*CSS for the signup page*/
 .custom-signup-container {
 background-color: #FFF19B;

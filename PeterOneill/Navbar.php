@@ -62,7 +62,7 @@ if (!isset($_SESSION['loggedin'])) {$_SESSION['userRole'] = 4;}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="Index.php">Home</a>
+                        <a class="nav-link" aria-current="page" href="Home">Home</a>
                     </li>
                     <li class="nav-item dropdown" id="aboutme-link">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -70,23 +70,23 @@ if (!isset($_SESSION['loggedin'])) {$_SESSION['userRole'] = 4;}
                             About Me
                         </a>
                         <ul class="dropdown-menu" id="aboutme-dropdown">
-                            <li><a class="dropdown-item" href="MyDisability.php">My Disability</a></li>
+                            <li><a class="dropdown-item" href="My-Disability">My Disability</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="MyWork.php">My Work</a></li>
+                            <li><a class="dropdown-item" href="My-Work">My Work</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="MyInterests.php">My Interests</a></li>
+                            <li><a class="dropdown-item" href="My-Interests">My Interests</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="MyRecommendations.php">My Recommendations</a></li>
+                            <li><a class="dropdown-item" href="My-Recommendations">My Recommendations</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="Blog.php">My Blog</a></li>
+                            <li><a class="dropdown-item" href="My-Blog">My Blog</a></li>
                         </ul>
                     </li>
                     <?php if ($_SESSION['userRole'] == 1) { ?>
@@ -96,7 +96,7 @@ if (!isset($_SESSION['loggedin'])) {$_SESSION['userRole'] = 4;}
                             Admin
                         </a>
                         <ul class="dropdown-menu" id="admin-dropdown">
-                            <li><a class="dropdown-item" href="AdminManage.php">Manage</a></li>
+                            <li><a class="dropdown-item" href="Admin-Dashboard">Manage</a></li>
                         </ul>
                     </li>
                     <?php 
@@ -109,19 +109,19 @@ if (!isset($_SESSION['loggedin'])) {$_SESSION['userRole'] = 4;}
                             Staff
                         </a>
                         <ul class="dropdown-menu" id="staff-dropdown">
-                            <li><a class="dropdown-item" href="UserProfile.php">Personal Details</a></li>
+                            <li><a class="dropdown-item" href="Profile">Personal Details</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="Timesheet.php">Time Sheets</a></li>
+                            <li><a class="dropdown-item" href="Timesheets">Time Sheets</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="AnnualLeave.php">Annual Leave</a></li>
+                            <li><a class="dropdown-item" href="Annual-Leave">Annual Leave</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="ChangePassword.php">Change Password</a></li>
+                            <li><a class="dropdown-item" href="Change-Password">Change Password</a></li>
                         </ul>
                     </li>
                     <?php
@@ -134,37 +134,37 @@ if (!isset($_SESSION['loggedin'])) {$_SESSION['userRole'] = 4;}
                             Family
                         </a>
                         <ul class="dropdown-menu" id="family-dropdown">
-                            <li><a class="dropdown-item" href="MusicCollection.php">Music</a></li>
+                            <li><a class="dropdown-item" href="Music">Music</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="VideoCollection.php">Videos</a></li>
+                            <li><a class="dropdown-item" href="Videos">Videos</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="PhotoCollection.php">Photos</a></li>
+                            <li><a class="dropdown-item" href="Photos">Photos</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="Documents.php">Documents</a></li>
+                            <li><a class="dropdown-item" href="Documents">Documents</a></li>
                         </ul>
                     </li>
                     <?php } ?>
                     <li class="nav-item" id="workingfor-link">
-                        <a class="nav-link" href="WorkingForMe.php">Working For Me</a>
+                        <a class="nav-link" href="Working-For-Me">Working For Me</a>
                     </li>
                     <li class="nav-item" id="contact-link">
-                        <a class="nav-link" href="ContactWith.php">Contact Me</a>
+                        <a class="nav-link" href="Contact">Contact Me</a>
                     </li>                    
                     <!-- Account links, log in link, sign up link-->
                 </ul>
                 <ul class="nav navbar-nav navbar-right ms-auto">
                     <?php if (!isset($_SESSION['loggedin'])) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="Signup.php"><i class="bi bi-person-fill-add"></i> Sign Up</a>
+                        <a class="nav-link" href="Sign-Up"><i class="bi bi-person-fill-add"></i> Sign Up</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Login.php"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                        <a class="nav-link" href="Login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
                     </li>
                     <?php 
                     } 
@@ -174,7 +174,7 @@ if (!isset($_SESSION['loggedin'])) {$_SESSION['userRole'] = 4;}
                         <a class="nav-link" href="Logout.php"><i class="bi bi-box-arrow-in-right"></i> Log Out</a>
                     </li>
                     <li class="nav-item" id="account-link">
-                        <a class="nav-link" href="UserProfile.php"><i class="bi bi-box-arrow-in-right"></i> Account</a>
+                        <a class="nav-link" href="Profile"><i class="bi bi-box-arrow-in-right"></i> Account</a>
                     </li>
                     <?php } 
                     ?>

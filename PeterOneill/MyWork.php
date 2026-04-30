@@ -23,16 +23,19 @@ include "Navbar.php";
         function cancel(pageText, editText) {
             pageText.style.display = "flex";
             editText.style.display = "none";
+            confirmEvent.style.display = "none";
         }
         function edit(pageText, editText) {
+            editEvent.style.display = "none";
             pageText.style.display = "none";
             editText.style.display = "flex";
             editText.value = pageText.innerHTML;
         }
         function confirm() {
-        pageText.innerHTML = editText.value;
-        pageText.style.display = "flex";
-        editText.style.display = "none";
+            cancelEvent.style.display = "none";
+            pageText.innerHTML = editText.value;
+            pageText.style.display = "flex";
+            editText.style.display = "none";
         }
         cancelEvent.addEventListener('click', () => cancel(pageText,editText));
         editEvent.addEventListener('click', () => edit(pageText,editText));

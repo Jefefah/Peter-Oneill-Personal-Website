@@ -10,9 +10,9 @@
 
 <body class="d-flex justify-content-center align-items-center min-vh-100">
     <div class="container p-4 bg-white border shadow w-50 text-center">
-        <h1>404 Forbidden</h1>
+        <h1>404 Not Found</h1>
         <p>This page was not found in the server, please contact the administrator if this is an error.</p>
-        <a href="../Index.php" class="custom-button btn btn-primary">Return to Home Page</a>
+        <a href="../Index" class="custom-button btn btn-primary">Return to Home Page</a>
     </div> 
 </body>
 </html>

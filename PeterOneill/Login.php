@@ -16,13 +16,13 @@ if (isset($_POST['login'])) {
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
         $_SESSION['Timeout'] = time(); // Set the timeout timestamp
-        header("Location: Index.php");
+        header("Location: Index");
         exit;
     }
     else {
         // Failed login
         $_SESSION['login_error'] = "<div class='alert alert-danger' role='alert'>Invalid username or password.</div>";
-        header("Refresh:2; url=Login.php");
+        header("Refresh:2; url=Login");
         exit;
     }
 }
@@ -53,7 +53,7 @@ include "Navbar.php";
         </div>
         <div class="d-flex justify-content-between mt-3">
             <button type="submit" value="login" name="login" class="custom-button btn btn-primary mb-3">Login</button>
-            <button type="button" class="btn btn-secondary mb-3" name="signup" id="signup" onclick="window.location.href='Signup.php'">
+            <button type="button" class="btn btn-secondary mb-3" name="signup" id="signup" onclick="window.location.href='Sign-Up'">
                 <small class="d-block">Create Account</small>
             </button>   
         </div>

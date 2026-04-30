@@ -1,0 +1,31 @@
+ErrorDocument 404 /GroupProject/PeterOneill/Errors/NotFound.php
+ErrorDocument 403 /GroupProject/PeterOneill/Errors/Forbidden.php
+
+RewriteEngine On
+
+# Custom URLs for site pages
+RewriteRule ^Home$ Index.php [L]
+RewriteRule ^My-Blog$ Blog.php [L]
+RewriteRule ^Timesheets$ Timesheet.php [L]
+RewriteRule ^Music$ MusicCollection.php [L]
+RewriteRule ^Photos$ PhotoCollection.php [L]
+RewriteRule ^Videos$ VideoCollection.php [L]
+RewriteRule ^Profile$ UserProfile.php [L]
+RewriteRule ^My-Interests$ MyInterests.php [L]
+RewriteRule ^My-Work$ MyWork.php [L]
+RewriteRule ^My-Disability$ MyDisability.php [L]
+RewriteRule ^My-Recommendations$ MyRecommendations.php [L]
+RewriteRule ^Contact$ ContactWith.php [L]
+RewriteRule ^Sign-Up$ Signup.php [L]
+RewriteRule ^Login$ Login.php [L]
+RewriteRule ^Admin-Dashboard$ AdminManage.php [L]
+RewriteRule ^Staff-Rota$ RotaDiary.php [L]
+RewriteRule ^Documents$ Documents.php [L]
+RewriteRule ^Annual-Leave$ AnnualLeave.php [L]
+RewriteRule ^Change-Password$ ChangePassword.php [L]
+RewriteRule ^Working-For-Me$ WorkingForMe.php [L]
+
+# Allows removal of .php from links for the URL
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [L]
